@@ -1,5 +1,5 @@
 # El primer *gateway* libre para IoT de Baleares
-Este será el diario del desarrollo del primer LoRa gateway TTN de Baleares. Una plataforma gratuita de conectividad a internet de dispositivos IOT abscrita a la red TTN: [The Thing Network](https://www.thethingsnetwork.org)
+Este será el diario del desarrollo del primer LoRa gateway TTN de Baleares. Una plataforma gratuita de conectividad a internet de dispositivos IOT abscrita a la red TTN: [The Things Network](https://www.thethingsnetwork.org)
 ![Primer gateway TTN de Baleares](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/TTN_map_1st_balearic.png?raw=true)
 
 ## ¿Por qué LoRa?
@@ -9,9 +9,9 @@ Se alcanzan fácilmente 2km en área urbana y más de 10 km en área rural. Actu
 LoRa es una tecnología de transmisión inalámbrica, desarrollada entre 2008 y 2013 en Francia y adquirida y patentada por la compañía Semtech, que permite comunicar datos a muy larga distancia y con bajo consumo de energía (~100mW).
 
 ### ¿Por qué TTN?
-![The Thing Network](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ttn_logo.png?raw=true)
+![The Things Network](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ttn_logo.png?raw=true)
 
-La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha dado la red [The Thing Network](https://www.thethingsnetwork.org). Que ha formado una comunidad abierta de *gateways* y nodos que permite la conectividad de dispositivos IoT sin 3G ni WiFi y sin coste. En realidad solo vamos a pagar el copywrite del chip LoRa de los dispositivos que compremos.
+La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha dado la red [The Things Network](https://www.thethingsnetwork.org). Que ha formado una comunidad abierta de *gateways* y nodos que permite la conectividad de dispositivos IoT sin 3G ni WiFi y sin coste. En realidad solo vamos a pagar el copywrite del chip LoRa de los dispositivos que compremos.
 
 ### Teoría de la señal
 Estas comunicaciones utilizan las bandas ISM (Industrial Scientific & Medical) 868 MHz para Europa. Son de uso libre sin licencia pero limitadas a la potencia de 25 mW (p.r.a.) y tiempo de transmisión del 1% ([Orden IET/787/2013 del cuadro nacional de atribución de frecuencias](https://www.boe.es/buscar/act.php?id=BOE-A-2013-4845)). Como norma general, no envíes más de una vez cada 3 minutos y cumplirás la reglamentación. Si quieres enviar más a menudo, existen [calculadoras](https://docs.google.com/spreadsheets/d/1voGAtQAjC1qBmaVuP1ApNKs1ekgUjavHuVQIXyYSvNc/edit#gid=0) para obtener los tiempos entre envío mínimos. Para LoRaWAN, revisa la [Fair access policy](https://www.thethingsnetwork.org/forum/t/limitations-data-rate-packet-size-30-seconds-uplink-and-10-messages-downlink-per-day-fair-access-policy/1300).
