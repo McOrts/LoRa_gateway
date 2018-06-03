@@ -1,5 +1,5 @@
 # LoRa_gateway
-Diario del desarrollo del primer LoRa gateway TTN de Baleares. Una nueva plataforma gratuita de conectividad a internet de dispositivos IOT abscrita a la red TTN: [The Thing Networks] (https://www.thethingsnetwork.org)
+Diario del desarrollo del primer LoRa gateway TTN de Baleares. Una nueva plataforma gratuita de conectividad a internet de dispositivos IOT abscrita a la red TTN: [The Thing Networks](https://www.thethingsnetwork.org)
 
 ## ¿LoRa?
 
