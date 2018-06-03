@@ -9,7 +9,7 @@ Se alcanzan fácilmente 2km en área urbana y más de 10 km en área rural. ¡Ac
 LoRa es una tecnología de transmisión inalámbrica, desarrollada entre 2008 y 2013 en Francia y adquirida y patentada por la compañía Semtech, que permite comunicar datos a muy larga distancia y con bajo consumo de energía (~100mW).
 
 ### ¿Por qué TTN?
-![The Thing Network](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ttn-logo.png?raw=true)
+![The Thing Network](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ttn_logo.png?raw=true)
 
 La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha dado la red [The Thing Network](https://www.thethingsnetwork.org). Que ha formado una comunidad abierta de *gateways* y nodos que permite la conectividad de dispositivos IoT sin 3G ni WiFi y sin coste. En realidad solo vamos a pagar el copywrite del chip LoRa de los dispositimos que compremos.
 
