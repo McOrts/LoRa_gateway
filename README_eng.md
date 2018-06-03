@@ -33,10 +33,10 @@ Several special sensing functions are provided. Activity and inactivity sensing 
 I used the following connection from the module above to my Wemos Mini
 
 TTGO LoRa32 Connection	- Module Connection
-3v3	    - VCC
-Gnd	    - Gnd
-SDA 21	 - SDA
-SCL 22	 - SCL
+- 3v3	     - VCC
+- Gnd	     - Gnd
+- SDA 21	 - SDA
+- SCL 22	 - SCL
 
 ![ESP32 conectividad con ADXL345](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/lolin32-and-adxl345_bb.png?raw=true)
 
