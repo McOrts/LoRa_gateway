@@ -10,7 +10,7 @@ LoRa es una tecnología de transmisión inalámbrica, desarrollada entre 2008 y 
 
 ### ¿Por qué TTN?
 ![The Thing Network](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ttn-logo.png?raw=true)
-La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha dado la red [The Thing Network](https://www.thethingsnetwork.org). Que ha formado una comunidad abierta de Gateways y nodos que permite la conectividad de dispositivos IoT sin 3G ni WiFi y sin coste. En realidad solo vamos a pagar el copywrite del chip LoRa de los dispositimos que compremos.
+La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha dado la red [The Thing Network](https://www.thethingsnetwork.org). Que ha formado una comunidad abierta de *gateways* y nodos que permite la conectividad de dispositivos IoT sin 3G ni WiFi y sin coste. En realidad solo vamos a pagar el copywrite del chip LoRa de los dispositimos que compremos.
 
 ### Teoría de la señal
 Estas comunicaciones utilizan las bandas ISM (Industrial Scientific & Medical) 868 MHz para Europa. Son de uso libre sin licencia pero limitadas a la potencia de 25 mW (p.r.a.) y tiempo de transmisión del 1% ([Orden IET/787/2013 del cuadro nacional de atribución de frecuencias](https://www.boe.es/buscar/act.php?id=BOE-A-2013-4845)). Como norma general, no envíes más de una vez cada 3 minutos y cumplirás la reglamentación. Si quieres enviar más a menudo, existen [calculadoras](https://docs.google.com/spreadsheets/d/1voGAtQAjC1qBmaVuP1ApNKs1ekgUjavHuVQIXyYSvNc/edit#gid=0) para obtener los tiempos entre envío mínimos. Para LoRaWAN, revisa la [Fair access policy](https://www.thethingsnetwork.org/forum/t/limitations-data-rate-packet-size-30-seconds-uplink-and-10-messages-downlink-per-day-fair-access-policy/1300).
@@ -29,7 +29,7 @@ He utilizado la placa [TTGO LoRa32 V2.0 868 MHz](https://www.aliexpress.com/item
 Para poner en marcha este Gateway gracias a [@TCRobotics](https://twitter.com/TCRobotics] tenemos este manual https://bricolabs.cc/wiki/guias/lora_ttn que con unos conocimientos del IDE de Arduino, es fácil de seguir.
 
 ![SF Propagacion](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG?raw=true)
-El resultado a sido un sencillo dispositivo que he conectado a mi antena WiFi del mástil de comunicaciones. Tengo una antena de 868,600 MHz por alguna razón tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance.
+El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
 ![Antenna](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png)
 
@@ -51,7 +51,7 @@ El ADXL345 es un sensor muy versátil y preciso. No solo nos dice su posición r
 ![ADXL345](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ADXL345.jpg?raw=true)
 
 # SEGUNDA ITERACIÓN
-Ya estoy preparando un potente Gateway multicanal. Y por el camino a tenerlo operativo, espero convencer a un par de empresas a que empiecen a comunicar sus dispositivos por el actual.
+Ya estoy preparando un potente Gateway multicanal. Y la tarea de reparar la antena de 868Mhz. Por el camino a tenerlo todo operativo, espero convencer a un par de empresas a que empiecen a comunicar sus dispositivos por mi gateway actual.
 
 __------- CONTINURÁ -------__
 
