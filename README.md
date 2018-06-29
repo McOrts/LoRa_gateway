@@ -51,6 +51,8 @@ Aprovechando el otro [TTGO LoRa32 V2.0 868 MHz](https://www.aliexpress.com/item/
 El ADXL345 es un sensor muy versátil y preciso. No solo nos dice su posición respecto a las tres coordenadas del espacio. Si no que nos determina la aceleración en m/s2. 
 ![ADXL345](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/ADXL345.jpg?raw=true)
 
+Par la parte de configurar el nodo en TTN, Akirasan ha puesto en su web un buen tutoral [http://akirasan.net/nodo-lorawan-con-esp32/](http://akirasan.net/nodo-lorawan-con-esp32/).
+
 # SEGUNDA ITERACIÓN
 Ya estoy preparando un potente Gateway multicanal. Y la tarea de reparar la antena de 868Mhz. Por el camino a tenerlo todo operativo, espero convencer a un par de empresas a que empiecen a comunicar sus dispositivos por mi gateway actual.
 
