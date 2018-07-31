@@ -52,7 +52,7 @@ Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 /* variab;es for moving detection */
 double p_x = 0.0; 
 double p_y = 0.0; 
-int p_sensibility = 3; // range to detect acceleration
+int p_sensibility = 5; // range to detect acceleration
 bool p_transmit = false; // determines when transmit de movement
 
 void displaySensorDetails(void)
@@ -160,15 +160,15 @@ void displayRange(void)
 // LoRaWAN NwkSKey, network session key
 // This is the default Semtech key, which is used by the early prototype TTN
 // network.
-static const PROGMEM u1_t NWKSKEY[16] = { 0x9E, 0x18, 0x16, 0x09, 0x0D, 0x1F, 0xDF, 0xE6, 0xF7, 0x60, 0xB0, 0x17, 0x9C, 0x68, 0x25, 0xF9 };
+static const PROGMEM u1_t NWKSKEY[16] = {0x07,0x77,0xBB,0x2C,0x3F,0x66,0xBE,0x23,0x19,0x73,0xFF,0x11,0xF3,0x1C,0xC5,0xC2};
 
 // LoRaWAN AppSKey, application session key
 // This is the default Semtech key, which is used by the early prototype TTN
 // network.
-static const u1_t PROGMEM APPSKEY[16] = { 0xC1, 0x69, 0xB0, 0x9E, 0x93, 0xB0, 0x2E, 0x8C, 0x67, 0xC7, 0x84, 0x6D, 0x1B, 0x28, 0x89, 0x94 };
+static const u1_t PROGMEM APPSKEY[16] = { 0x44,0xC8,0xA1,0x78,0x4A,0x84,0x3D,0xEE,0x6F,0x6C,0x0A,0xED,0xAE,0x92,0x9D,0x21 };
 
 // LoRaWAN end-device address (DevAddr)
-static const u4_t DEVADDR = 0x26011348 ; // <-- Change this address for every node!
+static const u4_t DEVADDR = 0x26011A9D ; // <-- Change this address for every node!
 
 // These callbacks are only used in over-the-air activation, so they are
 // left empty here (we cannot leave them out completely unless
@@ -416,6 +416,7 @@ void loop() {
   display.drawCircle(100, 32, 25);
   display.drawCircle(100+event.acceleration.x*10,32-event.acceleration.y*5, 5);
 
+  /* Draw position and ovement icon on OLED display*/
   if (event.acceleration.x-p_x > p_sensibility) {
     Serial.print (">");
     Serial.println (p_x); 
@@ -452,7 +453,7 @@ void loop() {
     display.drawLine(100, 57,  90, 40);
     display.drawLine(100, 57, 110, 40);
   }
-    if (event.acceleration.z>10 or event.acceleration.z<8) {
+    if (event.acceleration.z>12 or event.acceleration.z<6) {
     display.drawCircle(100, 32, 15);
     p_transmit = true;
   }
@@ -460,11 +461,11 @@ void loop() {
   if (p_transmit) {
     display.drawLine(122, 64, 122, 52);
     display.drawLine(118, 56, 126, 54);
-    display.display();
+    display.display ();
     Serial.println ("Transmiting"); 
     start_send();
     p_transmit = false;
-    delay(8000);
+    delay (30000);
   }
 
   display.display();
