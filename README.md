@@ -54,7 +54,19 @@ El ADXL345 es un sensor muy versátil y preciso. No solo nos dice su posición r
 Par la parte de configurar el nodo en TTN, Akirasan ha puesto en su web un buen tutoral [http://akirasan.net/nodo-lorawan-con-esp32/](http://akirasan.net/nodo-lorawan-con-esp32/).
 
 # SEGUNDA ITERACIÓN
-Ya estoy preparando un potente Gateway multicanal. Y la tarea de reparar la antena de 868Mhz. Por el camino a tenerlo todo operativo, espero convencer a un par de empresas a que empiecen a comunicar sus dispositivos por mi gateway actual.
+El dispositivo lo compré en AliExpres. Hay varias opciones en torno al hat RAK831 que usa el chipset SX1301. La distribución que he montado se desarrolló en un workshop del Things Network Conference 2018 utilizando una Raspberry Pi 3. En el aplicativo hay algunos aspectos en los que está verdes,, pero uno de los autores, [Jac  Kersing](https://www.thethingsnetwork.org/forum/u/kersing) está muy activo en los foros de TTN y me ha ayudado con algunos problemas. Y es el autor de la guía que he seguido para su montaje: https://www.thethingsnetwork.org/docs/gateways/rak831/
+
+las caracteristicas del equipo son:
+![Características del RAK831](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RAK831_characteristics.png?raw=true)
+
+El dispositivo lo forma una placa LoRa, un placa GPS, un adaptador y una Raspberry Pi 3. La interconexión entre los módulos se puede seguir en este diagrama:
+![RAK831 Diagrama de bloques](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RAK831_block_diagram.png?raw=true)
+
+La aplicación es compleja. Corre en un tipo de contenedor facilitado por la plataforma [resin.io](http://resin.io) basado el código Python que debes descargar de un repositorio Git.
+![Arquitectura resin.io](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/resin.io_architecture.png?raw=true)
+
+La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a una consola de resin:
+![Consola resin.io](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/resin.io_console.png?raw=true)
 
 __------- CONTINURÁ -------__
 
