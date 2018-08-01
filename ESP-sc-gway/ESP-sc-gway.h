@@ -242,7 +242,7 @@ struct wpas {
 #if 1
 wpas wpa[] = {
 	{ "" , "" },							// Reserved for WiFi Manager
-  { "MiFibra-2D79", "oqnQYSp3" },
+  { "??????????", "?????????" },
 	{ "ape", "apePasswd" }
 };
 #else
