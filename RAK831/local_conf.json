@@ -1,0 +1,13 @@
+{
+        "gateway_conf": {
+                "gateway_ID": "B827EBFFFEB62098",
+                "servers": [ { "server_address": "router.eu.thethings.network", "serv_port_up": 1700, "serv_port_down": 1700, "serv_enabled": true } ],
+                "ref_latitude": 39.565,
+                "ref_longitude": 2.656,
+                "ref_altitude": 30,
+                "contact_email": "mcorts69@gmail.com",
+                "description": "McOrts multichannel gateway RAK831",
+                "gps_tty_path": "/dev/ttyS0",
+                "fake_gps": false 
+        }
+}

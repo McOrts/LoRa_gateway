@@ -1,0 +1,14 @@
+{
+"rak831":{
+        "topic":"/home/rak831"
+        },
+"MQTT":{
+        "broker_server_ip":"192.168.xxx.xxx",
+        "qos":0
+        },
+"db_server_ip":"192.168.xxx.xxx",
+"db_read_user": "read_user",
+"db_read_password": "xxx",
+"db_update_user": "insert_user",
+"db_update_password": "xxx"
+}
