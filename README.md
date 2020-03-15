@@ -54,6 +54,7 @@ El ADXL345 es un sensor muy versátil y preciso. No solo nos dice su posición r
 Par la parte de configurar el nodo en TTN, Akirasan ha puesto en su web un buen tutoral [http://akirasan.net/nodo-lorawan-con-esp32/](http://akirasan.net/nodo-lorawan-con-esp32/).
 
 # SEGUNDA ITERACIÓN
+## Gateway multicanal con Resin
 El dispositivo lo compré en AliExpres. Hay varias opciones en torno al hat RAK831 que usa el chipset SX1301. La distribución que he montado se desarrolló en un workshop del Things Network Conference 2018 utilizando una Raspberry Pi 3. En el aplicativo hay algunos aspectos en los que está verdes,, pero uno de los autores, [Jac  Kersing](https://www.thethingsnetwork.org/forum/u/kersing) está muy activo en los foros de TTN y me ha ayudado con algunos problemas. Y es el autor de la guía que he seguido para su montaje: https://www.thethingsnetwork.org/docs/gateways/rak831/
 
 las caracteristicas del equipo son:
@@ -67,6 +68,11 @@ La aplicación es compleja. Corre en un tipo de contenedor facilitado por la pla
 
 La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a una consola de resin:
 ![Consola resin.io](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/resin.io_console.png?raw=true)
+
+
+# TERCERA ITERACIÓN
+## Gateway externo con el instalador Lorank8
+
 
 __------- CONTINURÁ -------__
 
