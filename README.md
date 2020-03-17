@@ -73,12 +73,17 @@ La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a u
 # TERCERA ITERACIÓN
 ## Gateway externo con el instalador Lorank8
 
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />
 La configuración anterior del gateway RAK831 presentaba problemas de estabilidad de la aplicación con errores recurrentes que me obligaban a reiniciar la aplicación Resin. Pero el mayor problema era la poca cobertura por tener que estar en interior a pesar de utilizar la anterna de onda completa de RAK de 5.8dbi. 
 
 ### La solución
 
+Caja estanca IP67
 
+### Monitorización. El problema de la temperatura
+
+<img src="<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="500" />
+<img src="<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />
 
 
 __------- CONTINURÁ -------__
