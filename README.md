@@ -16,8 +16,8 @@ La vuelta de tuerca a esta solución de interconectividad de dispositivos la ha 
 ### Teoría de la señal
 Estas comunicaciones utilizan las bandas ISM (Industrial Scientific & Medical) 868 MHz para Europa. Son de uso libre sin licencia pero limitadas a la potencia de 25 mW (p.r.a.) y tiempo de transmisión del 1% ([Orden IET/787/2013 del cuadro nacional de atribución de frecuencias](https://www.boe.es/buscar/act.php?id=BOE-A-2013-4845)). Como norma general, no envíes más de una vez cada 3 minutos y cumplirás la reglamentación. Si quieres enviar más a menudo, existen [calculadoras](https://docs.google.com/spreadsheets/d/1voGAtQAjC1qBmaVuP1ApNKs1ekgUjavHuVQIXyYSvNc/edit#gid=0) para obtener los tiempos entre envío mínimos. Para LoRaWAN, revisa la [Fair access policy](https://www.thethingsnetwork.org/forum/t/limitations-data-rate-packet-size-30-seconds-uplink-and-10-messages-downlink-per-day-fair-access-policy/1300).
 
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/propagation.png" width="300" align="left" />)
 __*Spreading Factor*__ es un importante cuando utilizamos un único canal de comunicación. El SF especifica la potencia de transmisión, la subfrecuencia y el tiempo de aire (Time on Air). En otras palabras, hace lo mismo que cuando conversamos en un entorno ruidoso, hablamos más despacio alargando las palabras. De esta manera un SF alto, 12 por ejemplo. Permite un mayor alcance pero menos capacidad de transmisión:
-![SF Propagacion](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/propagation.png?raw=true)
 
 ### La seguridad. ABP: Activation By Personalisation
 En ABP un dispositivo no necesita los identificadores de DevEUI, ApEUI y AppKey. En cambio las claves de sesión, NwkSKey y AppSKey si, y las tiene preprogramadas el dispositivo, el cual ya estaría preregistrado en la red. Cuando el dispositivo se quiere comunicar, lo hace usando esas claves de sesión sin tener que usar ningún procedimiento de unión a la red.
@@ -29,7 +29,7 @@ SCG, ¨Single-channel gateways¨ no es la solución óptima para un Gateway de l
 He utilizado la placa [TTGO LoRa32 V2.0 868 MHz](https://www.aliexpress.com/item/2-Pcs-TTGO-LORA32-V2-0-868-433Mhz-ESP32-LoRa-OLED-0-96-Inch-SD-Card/32847443952.html). Basada en el microprocesador ESP32, con WiFi y BlueTooth. Además integra una pantallita Oled muy lograda y puede alimentarse con una LiPo y cargarla por USB, perfecta para desarrollar y hacer pruebas. !Y tan solo por 19€!
 Para poner en marcha este *gateway* gracias a [@TCRobotics](https://twitter.com/TCRobotics) tenemos este manual https://bricolabs.cc/wiki/guias/lora_ttn que con unos conocimientos del IDE de Arduino, es fácil de seguir.
 
-![SF Propagacion](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG?raw=true)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG" width="300" align="left" />)
 El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
 ![Antenna](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png)
@@ -72,6 +72,13 @@ La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a u
 
 # TERCERA ITERACIÓN
 ## Gateway externo con el instalador Lorank8
+
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />)
+La configuración anterior del gateway RAK831 presentaba problemas de estabilidad de la aplicación con errores recurrentes que me obligaban a reiniciar la aplicación Resin. Pero el mayor problema era la poca cobertura por tener que estar en interior a pesar de utilizar la anterna de onda completa de RAK de 5.8dbi. 
+
+### La solución
+
+
 
 
 __------- CONTINURÁ -------__
