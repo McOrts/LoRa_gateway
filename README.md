@@ -100,7 +100,7 @@ Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base
 He completdo el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estao de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="500" />
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="300" align="right" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="250" align="right" />
 Para ejecutar el programa he preferido hacerlo a través de una entrad en el cron del Raspbian:
 ```
 # m h  dom mon dow   command
@@ -108,7 +108,7 @@ Para ejecutar el programa he preferido hacerlo a través de una entrad en el cro
 ```
 ### El resultado
 El exfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" width="300" align="right" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" />
 
 __------- CONTINURÁ -------__
 
