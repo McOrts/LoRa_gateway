@@ -32,7 +32,7 @@ Para poner en marcha este *gateway* gracias a [@TCRobotics](https://twitter.com/
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG?raw=true" width="300" align="left" />)
 El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png" width="300" align="right" />)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png" width="300" align="right" />
 En una de las Raspberry Pi de mi domótica he dejado arrrancada la consola de tráfico del *gateway*. Y sorpresa: !tengo conexiones de dispositivos! Pero si yo no he montado todavia mi nodo y en Mallorca no hay ningún *gateway* de TTN. Espero resolver algún día este misterio.
 
 ![TTN Consola](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/TTN_Consola_RBPy.png?raw=true)
