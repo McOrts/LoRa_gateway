@@ -32,9 +32,7 @@ Para poner en marcha este *gateway* gracias a [@TCRobotics](https://twitter.com/
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG?raw=true" width="300" align="left" />)
 El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
-![Antenna](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png)
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png" width="300" align="right" />)
-
 En una de las Raspberry Pi de mi domótica he dejado arrrancada la consola de tráfico del *gateway*. Y sorpresa: !tengo conexiones de dispositivos! Pero si yo no he montado todavia mi nodo y en Mallorca no hay ningún *gateway* de TTN. Espero resolver algún día este misterio.
 
 ![TTN Consola](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/TTN_Consola_RBPy.png?raw=true)
@@ -101,7 +99,7 @@ Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base
 He completado el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estado de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
 ![nodered-flow](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png)
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail y Twitter cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="250" align="right" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="300" align="right" />
 Para ejecutar el programa he preferido hacerlo a través de una entrada en el cron del Raspbian:
 ```
 # m h  dom mon dow   command
