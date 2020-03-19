@@ -29,7 +29,7 @@ SCG, ¨Single-channel *gateway*s¨ no es la solución óptima para un *gateway* 
 He utilizado la placa [TTGO LoRa32 V2.0 868 MHz](https://www.aliexpress.com/item/2-Pcs-TTGO-LORA32-V2-0-868-433Mhz-ESP32-LoRa-OLED-0-96-Inch-SD-Card/32847443952.html). Basada en el microprocesador ESP32, con WiFi y BlueTooth. Además integra una pantallita Oled muy lograda y puede alimentarse con una LiPo y cargarla por USB, perfecta para desarrollar y hacer pruebas. !Y tan solo por 19€!
 Para poner en marcha este *gateway* gracias a [@TCRobotics](https://twitter.com/TCRobotics) tenemos este manual https://bricolabs.cc/wiki/guias/lora_ttn que con unos conocimientos del IDE de Arduino, es fácil de seguir.
 
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_*gateway*_SCG.JPG" width="300" align="left" />)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_gateway_SCG.JPG" width="300" align="left" />)
 El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
 ![Antenna](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png)
@@ -73,7 +73,7 @@ La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a u
 # TERCERA ITERACIÓN
 ## *gateway* externo con el instalador Lorank8
 
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_*gateway*_RAK831_p2.jpg" width="300" align="right" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />
 La configuración anterior del *gateway* RAK831 basado en Raspberry Pi 3 presentaba problemas de estabilidad con errores recurrentes que me obligaban a reiniciar la aplicación Resin. Pero el mayor problema era la poca cobertura a pesar de utilizar la antena de onda completa de RAK de 5.8dbi ya que tenía que estar en interior. La caja original no tiene ninguna estanqueidad. 
 
 ### La solución
@@ -98,7 +98,7 @@ temp=42.8'C
 ```
 Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
 He completado el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estado de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="600" />
+![nodered-flow](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png)
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail y Twitter cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="250" align="right" />
 Para ejecutar el programa he preferido hacerlo a través de una entrada en el cron del Raspbian:
@@ -108,7 +108,7 @@ Para ejecutar el programa he preferido hacerlo a través de una entrada en el cr
 ```
 ### El resultado
 El esfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_*gateway*_RAK831_TTN_mapper.png" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" />
 
 __------- CONTINURÁ -------__
 
