@@ -29,10 +29,11 @@ SCG, ¨Single-channel *gateway*s¨ no es la solución óptima para un *gateway* 
 He utilizado la placa [TTGO LoRa32 V2.0 868 MHz](https://www.aliexpress.com/item/2-Pcs-TTGO-LORA32-V2-0-868-433Mhz-ESP32-LoRa-OLED-0-96-Inch-SD-Card/32847443952.html). Basada en el microprocesador ESP32, con WiFi y BlueTooth. Además integra una pantallita Oled muy lograda y puede alimentarse con una LiPo y cargarla por USB, perfecta para desarrollar y hacer pruebas. !Y tan solo por 19€!
 Para poner en marcha este *gateway* gracias a [@TCRobotics](https://twitter.com/TCRobotics) tenemos este manual https://bricolabs.cc/wiki/guias/lora_ttn que con unos conocimientos del IDE de Arduino, es fácil de seguir.
 
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_gateway_SCG.JPG" width="300" align="left" />)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/LORA_TTN_Gateway_SCG.JPG?raw=true" width="300" align="left" />)
 El resultado a sido un sencillo dispositivo en el identificado eui-d8a01dffff402024 que he conectado a la antena WiFi de mi mástil de comunicaciones. En el que tengo una antena de 868,600 MHz pero que por alguna razón, tiene un corto con la masa. El Spreading Factor que he configurado es de 7 pendiente de hacer pruebas de alcance. Se puede consultar el estado y localización en: https://www.thethingsnetwork.org/u/mcorts
 
 ![Antenna](https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png)
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/pictures/antennas_mast.png" width="300" align="right" />)
 
 En una de las Raspberry Pi de mi domótica he dejado arrrancada la consola de tráfico del *gateway*. Y sorpresa: !tengo conexiones de dispositivos! Pero si yo no he montado todavia mi nodo y en Mallorca no hay ningún *gateway* de TTN. Espero resolver algún día este misterio.
 
