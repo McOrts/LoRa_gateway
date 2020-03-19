@@ -98,7 +98,7 @@ temp=42.8'C
 ```
 Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
 He completdo el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estao de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
-<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="500" />
+<img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="600" />
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="250" align="right" />
 Para ejecutar el programa he preferido hacerlo a través de una entrad en el cron del Raspbian:
