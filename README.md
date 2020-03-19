@@ -55,7 +55,7 @@ Par la parte de configurar el nodo en TTN, Akirasan ha puesto en su web un buen 
 
 # SEGUNDA ITERACIÓN
 ## Gateway multicanal con Resin
-El dispositivo lo compré en AliExpres. Hay varias opciones en torno al hat RAK831 que usa el chipset SX1301. La distribución que he montado se desarrolló en un workshop del Things Network Conference 2018 utilizando una Raspberry Pi 3. En el aplicativo hay algunos aspectos en los que está verdes,, pero uno de los autores, [Jac  Kersing](https://www.thethingsnetwork.org/forum/u/kersing) está muy activo en los foros de TTN y me ha ayudado con algunos problemas. Y es el autor de la guía que he seguido para su montaje: https://www.thethingsnetwork.org/docs/gateways/rak831/
+El dispositivo lo compré en AliExpres. Hay varias opciones en torno al hat RAK831 que usa el chipset SX1301. La distribución que he montado se desarrolló en un workshop del Things Network Conference 2018 utilizando una Raspberry Pi 3. En el aplicativo hay algunos aspectos en los que está verdes, pero uno de los autores, [Jac  Kersing](https://www.thethingsnetwork.org/forum/u/kersing) está muy activo en los foros de TTN y me ha ayudado con algunos problemas. Y es el autor de la guía que he seguido para su montaje: https://www.thethingsnetwork.org/docs/gateways/rak831/
 
 las caracteristicas del equipo son:
 ![Características del RAK831](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RAK831_characteristics.png?raw=true)
@@ -74,40 +74,40 @@ La operativa no se lleva desde una conexión directa a la Raspberry Pi, sino a u
 ## Gateway externo con el instalador Lorank8
 
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_p2.jpg" width="300" align="right" />
-La configuración anterior del gateway RAK831 basado en Raspberry Pi 3 presentaba problemas de estabilidad con errores recurrentes que me obligaban a reiniciar la aplicación Resin. Pero el mayor problema era la poca cobertura a pesar de utilizar la anterna de onda completa de RAK de 5.8dbi ya que tenía que estar en interior. La caja original no tiene ninguna estanqueidad. 
+La configuración anterior del gateway RAK831 basado en Raspberry Pi 3 presentaba problemas de estabilidad con errores recurrentes que me obligaban a reiniciar la aplicación Resin. Pero el mayor problema era la poca cobertura a pesar de utilizar la antena de onda completa de RAK de 5.8dbi ya que tenía que estar en interior. La caja original no tiene ninguna estanqueidad. 
 
 ### La solución
 
 Me he provisto de una de exterior con certificación IP67, la [Nebra de aluminio](https://www.ebay.co.uk/itm/223660547000). Así como de los prensa estopas necesarios para que los cables pasen al interior de la caja sin poner en peligro su estanqueidad. 
 Es muy importante utilizar un cable de antena lo más corto posible. Por lo que lo más fácil es poner ambas en el mismo mástil. 
-La antena de GPS queda en el interior con una cobertura reducida. Lo que no es un problema ya que la localizaciónd el gateway se configura manualmente.
+La antena de GPS queda en el interior con una cobertura reducida. Lo que no es un problema ya que la localización del gateway se configura manualmente.
 
-Para instalar el software he seguido el documento del taller de Gateways de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99).
+Para instalar el software he seguido el documento del taller de gateways de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99).
 
 ### El problema de la temperatura. Monitorización 
-Me preocupa que la falta de refrigeración activa lleve a la CPU de la Raspberry Pi a quemarse. Lo que no sabré si pasa hasta que lleguen los calores del verano. Preventivamente he reducido consumos innecesarios como la WiFi o el BlueTooth. Lo que se puede hacer fácilmente añadiendo al fichero de configuración /boot/config.txt los parámetros:
+Me preocupa que la falta de refrigeración activa lleve a la CPU de la Raspberry Pi a quemarse. Lo que no sabré si pasa hasta que lleguen los calores del verano. Preventivamente he reducido consumos innecesarios como la WiFi o el BlueTooth. Lo que se puede hacer fácilmente añadiendo al fichero de configuración */boot/config.txt* los parámetros:
 ```
 dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
 
-Y para conocer saber la temperatura he hecho un pequeño programa en Pyhton que basado en el comando vcgencmd lee el sensor del a CPU:
+Y para conocer saber la temperatura he hecho un pequeño programa en Pyhton que basado en el comando *vcgencmd* lee el sensor del a CPU:
 ```
 root@raspberrypi:~# vcgencmd measure_temp
 temp=42.8'C
 ```
 Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
-He completdo el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estao de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
+He completado el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estado de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png" width="600" />
-Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
+Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail y Twitter cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="250" align="right" />
-Para ejecutar el programa he preferido hacerlo a través de una entrad en el cron del Raspbian:
+Para ejecutar el programa he preferido hacerlo a través de una entrada en el cron del Raspbian:
 ```
 # m h  dom mon dow   command
 */15 * * * * /usr/bin/python /home/pi/system_info_RAK831.py
 ```
 ### El resultado
-El exfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
+El esfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" />
 
 __------- CONTINURÁ -------__
