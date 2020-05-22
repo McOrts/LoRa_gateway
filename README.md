@@ -95,7 +95,18 @@ Y para conocer saber la temperatura he hecho un pequeño programa en Pyhton que 
 root@raspberrypi:~# vcgencmd measure_temp
 temp=42.8'C
 ```
-Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
+
+El programa puedes encontrarlo en la carpeta de /source con el nombre system_info_rak831.py. Pero antes de ejecutarlo necesitarás añadir unas librerias a tu Raspberry Pi:
+* Cliente MySQL:
+```
+sudo apt-get install python-mysqldb
+```
+* Librerias para la conexión con MQTT
+```
+pip install paho-mqtt
+```
+
+El programa transmite la medidas a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
 He completado el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estado de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
 ![nodered-flow](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png)
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail y Twitter cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
