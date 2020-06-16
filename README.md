@@ -95,16 +95,63 @@ Y para conocer saber la temperatura he hecho un pequeño programa en Pyhton que 
 root@raspberrypi:~# vcgencmd measure_temp
 temp=42.8'C
 ```
-Transmite la medida a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
+
+El programa puedes encontrarlo en la carpeta de /source con el nombre system_info_rak831.py. Pero antes de ejecutarlo necesitarás añadir unas librerias a tu Raspberry Pi:
+* Cliente MySQL:
+```hash
+sudo apt-get install python-mysqldb
+```
+* Librerias para la conexión con MQTT
+```hash
+pip install paho-mqtt
+```
+
+El programa transmite la medidas a un Topic de MQTT y graba el valor en una tabla de una base de datos MySQL.
 He completado el programa con medidas de almacenamiento, carga de la CPU y memoria. De manera que tengo una información completa del estado de la Raspberry Pi que puedo mostrar en una aplicación Node-RED con el siguiente flujo:
 ![nodered-flow](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/system_info_nodered-flow_RAK831.png)
 Finalmente tengo accesible el estado y evolución de estos indicadores en un dashboard de Node-RED que también me enviará alertas por mail y Twitter cuando la aplicación deje de enviar mensajes al topic o la temperatura supere un umbral.
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard.png" width="300" align="right" />
 Para ejecutar el programa he preferido hacerlo a través de una entrada en el cron del Raspbian:
-```
+```hash
 # m h  dom mon dow   command
 */15 * * * * /usr/bin/python /home/pi/system_info_RAK831.py
 ```
+### Monitorizando el tráfico
+Para completar la monitorización del Gateway se hace necesario incluir en el dashboard de Node-red, datos y gráficas respecto al tráfico que recibe de los nodos a su alcance.
+
+Por una parte he utilizado la api no oficial de TTN para consultar los up y downlinks, que nos devuelve un .json con la información que identifica el gateway y los totales del tráfico. [](http://noc.thethingsnetwork.org:8085/api/v2/gateways/{gateway ID})
+
+```json
+{
+"timestamp": "2020-06-09T21:07:52.321042509Z",
+"uplink": "46667",
+"downlink": "27488",
+"location": {
+"latitude": 39.565,
+"longitude": 2.656001,
+"altitude": 30
+},
+"frequency_plan": "EU_863_870",
+"gps": {
+"latitude": 39.565,
+"longitude": 2.656001,
+"altitude": 30
+},
+"time": "1591736872321042509",
+"rx_ok": 46667,
+"tx_in": 27488
+}
+```
+Para optener una cifra en función del tiempo. Se puede utilizar la captura de las tramas de red utilizando __tcpdump__ que deberemos instalar previamente con:
+```hash
+sudo apt install tcpdump
+```
+Ahora podremos lanzar una tarea a segundo plano que capturará todas las tramas y las enviará a otra Raspberry Pi que tiene un flujo de Node-red donde se filtrarán los paquetes para solo aquello que contienen "rxpk" y los contará por hora.
+```hash
+sudo tcpdump port 1700 -s 500 -U -n -t -w - -i eth0 | nc 192.168.1.114 5659 &
+ ```
+![nodered-flow-traffic](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/RPI_RAK831_cpu_dashboard_traffic.png)
+
 ### El resultado
 El esfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" />
@@ -116,3 +163,4 @@ __------- CONTINURÁ -------__
 * En primer lugar a __Alejandro Taracido__ alias [@TCRobotics](https://twitter.com/TCRobotics) fundador de [BricoLabs](https://twitter.com/Brico_Labs) por la base del código fuente del gatewawy basado en el repositorio de Jac Kersing https://github.com/kersing/ESP-1ch-*gateway*-v5.0
 * Para el nodo, __Jorge :P__ alias [akirasan](https://twitter.com/akirasan). Me ha guiado por el buen camino de código que el brillante programador Matthijs Kooijman ha dejado libre para todos nosotros https://github.com/matthijskooijman/arduino-lmic.
 * A Ángel Luís Martínez [@AngeLinuX99](https://github.com/AngeLinuX99) por la práctica documentación del taller de *gateway*s de TTN Madrid. 
+* __Roberto Barrios__ por la aportación a la monitorización del tráfico en: https://rbarrios.com/projects/ttngwmon/
