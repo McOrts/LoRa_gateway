@@ -81,7 +81,7 @@ Me he provisto de una de exterior con certificación IP67, la [Nebra de aluminio
 Es muy importante utilizar un cable de antena lo más corto posible. Por lo que lo más fácil es poner ambas en el mismo mástil. 
 La antena de GPS queda en el interior con una cobertura reducida. Lo que no es un problema ya que la localización del *gateway* se configura manualmente.
 
-Para instalar el software de _gateway_ he seguido [este documento](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/Taller_GW_RAK831_LoRaWAN.pdf) utilizado en el taller de *gateway*s de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99). Este software de host, en esencia es un reenviador de paquetes hacia UDP. No incluye un alto nivel de seguridad pero es fácil de instalar: [The Things Network: iC880a-based gateway](https://github.com/ttn-zh/ic880a-gateway)
+Para instalar el software de _gateway_ he seguido [este documento](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/Taller_GW_RAK831_LoRaWAN.pdf) utilizado en el taller de *gateway*s de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99). Este software de host, en esencia es un reenviador de paquetes UDP. No incluye un alto nivel de seguridad pero es fácil de instalar: [The Things Network: iC880a-based gateway](https://github.com/ttn-zh/ic880a-gateway)
 
 ### El problema de la temperatura. Monitorización 
 Me preocupa que la falta de refrigeración activa lleve a la CPU de la Raspberry Pi a quemarse. Lo que no sabré si pasa hasta que lleguen los calores del verano. Preventivamente he reducido consumos innecesarios como la WiFi o el BlueTooth. Lo que se puede hacer fácilmente añadiendo al fichero de configuración */boot/config.txt* los parámetros:
@@ -156,6 +156,37 @@ sudo tcpdump port 1700 -s 500 -U -n -t -w - -i eth0 | nc 192.168.1.114 5659 &
 El esfuerzo a dado buenos resultados. De momento he mapeado las zonas de costa con un nodo dado de alta en [TTN Mapper](https://ttnmapper.org/) con un alcance que ha superado los 10Km
 <img src="https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/McOrts_TTN_gateway_RAK831_TTN_mapper.png" />
 
+<img src="/RAK831/TTN_V3_Console.png" width="300" align="right" />
+
+# Migración a TTN V3
+A primeros de diciembre de 2021 The Things Networks V2 desapareció pasando a ofrecer un nuevo backend para las comunicadades. Es lo que ahora se llama The Things Stack Community Edition. 
+Esto implicaba una necesaria migracion de mi gateway. Gracias al [video de Biblioman](https://youtu.be/q-AlFCXwgwM) la actualización ha sido muy sencilla:
+- [ ] En primer lugar habrá que crear un nuevo gateway desde la consola. Básicamente tenemos que copiar el Gateway ID, elegir la misma banda en el Frequency Plan y darle un nuevo nombre.
+<img src="/RAK831/TTN_V3_AddGateway.png" width="500" align="center" />
+
+- [ ] Seguidamente tendremos que acceder por SSH a nuestra Raspberry Pi y editar el siguiente archivo:
+```hash
+pi@mcorts-rak831-pmi1:~ $ cd /opt/ttn-gateway/bin
+pi@mcorts-rak831-pmi1:/opt/ttn-gateway/bin $ sudo nano local_conf.json
+```
+- [ ] El único cambio necesario será sustituir el "server_address" por el que se nos asignó al crear el gateway en el punto anterior
+```json
+{
+        "gateway_conf": {
+                "gateway_ID": "B827EBFFFEB62098",
+                "servers": [ { "server_address": "eu1.cloud.thethings.network", "serv_port_up": 1700, "serv_port_down": 1700, "serv_enabled": true } ],
+                "ref_latitude": 39.536,
+                "ref_longitude": 2.718,
+                "ref_altitude": 30,
+                "contact_email": "***************",
+                "description": "McOrts multichannel gateway RAK831",
+                "gps_tty_path": "/dev/ttyS0",
+                "fake_gps": false
+        }
+}
+```
+- [ ] Finalmente reuniciamos la Raspberry Pi (sudo reboot now) y en un minuto ya tendremos recibiendo menssajes.
+
 __------- CONTINURÁ -------__
 
 
@@ -164,3 +195,4 @@ __------- CONTINURÁ -------__
 * Para el nodo, __Jorge :P__ alias [akirasan](https://twitter.com/akirasan). Me ha guiado por el buen camino de código que el brillante programador Matthijs Kooijman ha dejado libre para todos nosotros https://github.com/matthijskooijman/arduino-lmic.
 * A Ángel Luís Martínez [@AngeLinuX99](https://github.com/AngeLinuX99) por la práctica documentación del taller de *gateway*s de TTN Madrid. 
 * __Roberto Barrios__ por la aportación a la monitorización del tráfico en: https://rbarrios.com/projects/ttngwmon/
+* A __Biblioman09__ por hacerme fácil la migración a V3 https://twitter.com/biblioman09/
