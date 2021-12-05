@@ -81,7 +81,7 @@ Me he provisto de una de exterior con certificación IP67, la [Nebra de aluminio
 Es muy importante utilizar un cable de antena lo más corto posible. Por lo que lo más fácil es poner ambas en el mismo mástil. 
 La antena de GPS queda en el interior con una cobertura reducida. Lo que no es un problema ya que la localización del *gateway* se configura manualmente.
 
-Para instalar el software he seguido el documento del taller de *gateway*s de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99).
+Para instalar el software de _gateway_ he seguido [este documento](https://github.com/McOrts/LoRa_gateway/blob/master/RAK831/Taller_GW_RAK831_LoRaWAN.pdf) utilizado en el taller de *gateway*s de TTN Madrid de [@AngeLinuX99](https://github.com/AngeLinuX99). Este software de host, en esencia es un reenviador de paquetes hacia UDP. No incluye un alto nivel de seguridad pero es fácil de instalar: [The Things Network: iC880a-based gateway](https://github.com/ttn-zh/ic880a-gateway)
 
 ### El problema de la temperatura. Monitorización 
 Me preocupa que la falta de refrigeración activa lleve a la CPU de la Raspberry Pi a quemarse. Lo que no sabré si pasa hasta que lleguen los calores del verano. Preventivamente he reducido consumos innecesarios como la WiFi o el BlueTooth. Lo que se puede hacer fácilmente añadiendo al fichero de configuración */boot/config.txt* los parámetros:
